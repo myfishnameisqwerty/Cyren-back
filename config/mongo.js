@@ -5,5 +5,6 @@ mongoose.connect(process.env.DB_SERVER, {useNewUrlParser:true, useUnifiedTopolog
     useCreateIndex: true
 })
 mongoose.set('returnOriginal', false)
+mongoose.set('useFindAndModify', false);
 mongoose.connection.on("connected",()=>console.log("Mongo database connected"))
 mongoose.connection.on("error",(err)=>console.log(err))

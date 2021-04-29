@@ -1,13 +1,19 @@
 const mongoose = require('mongoose')
-const {isEmail} = required('validator')
+const {isEmail} = require('validator')
 const schema = new mongoose.Schema({
     id: String,
     name:{
         type: String,
-        required: true
+        required: true,
+        validate:{
+            validator: (v) => {
+                return /^([a-zA-Z\s\.`é-]+)$/.test(v)
+            }
+        }
     },
     email:{
         type: String,
+        immutable: true,
         trim: true,
         lowercase: true,
         unique: true,
@@ -22,6 +28,11 @@ const schema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    fetched: {
+        type: Boolean,
+        default: false
+    },
     password: String
 })
-module.exports = mongoose.model('users', schema)
+const model = mongoose.model('users', schema)
+module.exports = model
