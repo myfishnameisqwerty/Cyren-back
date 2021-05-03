@@ -9,7 +9,7 @@ const schema = new mongoose.Schema({
         required: true,
         validate:{
             validator: (v) => {
-                return /^([a-zA-Z\s\.'é-]+)$/.test(v)
+                return /^([a-zA-Z\s.'-]+)$/.test(v)
             }
         }
     },
