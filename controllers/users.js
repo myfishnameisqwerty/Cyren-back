@@ -49,7 +49,6 @@ exports.findAll = async (req, res) => {
           let range = [0, 10];
           let result = [...response]
           
-          
           try {
               if (req.query.filter && Object.keys(JSON.parse(req.query.filter)).length) {
                   let filter = JSON.parse(req.query.filter)
@@ -59,6 +58,7 @@ exports.findAll = async (req, res) => {
 
                   );
             }
+            
             if (req.query.sort) {
               const sort = JSON.parse(req.query.sort);
               sort[1] = sort[1].toLowerCase() === "asc" ? 1 : -1;
